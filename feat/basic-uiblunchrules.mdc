@@ -1,0 +1,67 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# blunchrules for feat/basic-ui
+
+## Overview / Purpose
+基本的なUIコンポーネントの実装とレイアウトの構築を行います。
+視線計測アプリケーションの基盤となるUIフレームワークを確立し、研究者と被験者のインタラクションを実現します。
+
+## Scope / Out‑of‑Scope
+- **In scope**: 
+  - メインウィンドウのレイアウト設計（カメラ映像表示領域、操作パネル）
+  - YES/NOインタラクション用のボタンUI
+  - セッション管理UI（開始/停止、セッション名入力）
+  - 基本的なスタイリングとテーマ設定
+- **Out of scope**: 
+  - 視線計測ロジックの実装
+  - 文字入力UI（T9/6×5グリッド）
+  - 絵文字/シンボル選択UI
+  - データ永続化ロジック
+
+## Directory Changes
+- 新規作成:
+  - `src/gui/main_window.py` - メインウィンドウクラス
+  - `src/gui/components/` - UIコンポーネント群
+    - `camera_view.py` - カメラ映像表示
+    - `control_panel.py` - 操作パネル
+    - `yesno_buttons.py` - YES/NOボタン
+  - `resources/styles/` - スタイルシート
+    - `main.qss` - メインテーマ
+    - `buttons.qss` - ボタンスタイル
+
+## Dependency Changes
+- PyQt6: UIフレームワーク
+- qdarkstyle: ダークテーマ
+- バージョンは management_ver.md に追記予定
+
+## Test Checklist
+- [ ] Unit tests
+  - ウィンドウの初期化テスト
+  - レイアウトの整合性チェック
+  - ボタンの状態遷移テスト
+- [ ] GUI tests
+  - ウィンドウの表示確認
+  - カメラ映像の表示確認
+  - YES/NOボタンのインタラクション確認
+- [ ] Manual sanity check
+  - ウィンドウの表示確認
+  - レイアウトの確認
+  - カメラ映像の表示確認
+  - YES/NOボタンの操作確認
+
+## Migration / Data Considerations
+- 新規実装のため、既存データへの影響なし
+- 将来的な拡張を考慮したUIレイアウト設計
+
+## Rollback Plan
+1. ブランチを削除
+2. mainブランチに戻る
+3. 必要に応じて`src/gui/`ディレクトリを削除
+
+## Milestone & Deadline
+- 基本レイアウト完了: 2024-05-15
+- YES/NOインタラクションUI実装完了: 2024-05-22
+- テスト完了: 2024-05-29

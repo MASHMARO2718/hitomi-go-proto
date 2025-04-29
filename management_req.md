@@ -2,10 +2,21 @@
 
 | ID | Title | Description | Priority (MoSCoW) | Status |
 |----|-------|-------------|--------------------|--------|
-| FR-001 | Example | Short description | Must | Open |
+| FR-001 | リアルタイム視線トラッキング | Webカメラ映像を30FPS以上で処理し、両眼の瞳孔中心と注視座標(x,y)を推定 | Must | Open |
+| FR-002 | YES/NOインタラクション | 視線の固定時間(700ms)でYES/NOボタンを確定し、CSVへ記録 | Must | Open |
+| FR-003 | オンスクリーン文字入力 | T9風レイアウトまたは6×5グリッドを視線で選択→IME連携・CSV保存 | Should | Open |
+| FR-004 | 絵文字/シンボル選択 | 6～10個のスタンプを選択して感情を伝達 | Could | Open |
+| FR-005 | ロギング&リプレイ | 生フレーム、推定gaze座標、選択結果をタイムスタンプ付きで保存 | Must | Open |
 
 # Non‑Functional Requirements
 
 | ID | Metric | Target | Verification |
 |----|--------|--------|--------------|
-| NFR-001 | Eye‑gaze accuracy | ≤1° | Bench test |
+| NFR-001 | レイテンシ | カメラ取得→注視座標出力 ≤ 100ms | CIベンチマーク |
+| NFR-002 | 推定FPS | 25-30FPS安定 | CIベンチマーク |
+| NFR-003 | トラッキング精度 | 画面対角誤差 ≤ 2° | CIベンチマーク |
+| NFR-004 | CPU使用率 | ノートPC(i7-13620H)で40%未満 | CIベンチマーク |
+| NFR-005 | ロスト検出復帰時間 | 1秒以内 | CIベンチマーク |
+| NFR-006 | カメラ解像度 | 1280x720以上推奨 | 動作確認 |
+| NFR-007 | セッション管理 | 日付+セッション番号形式のCSV保存 | 動作確認 |
+| NFR-008 | ログ形式 | JSON形式でFPS/ドロップフレーム統計を保存 | 動作確認 |
