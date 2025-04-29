@@ -1,0 +1,25 @@
+name: Verify blunchrules
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - 'release/**'
+  pull_request:
+    branches-ignore:
+      - main
+      - 'release/**'
+
+jobs:
+  blunchrules-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check rules file exists
+        run: |
+          branch="${{ github.head_ref || github.ref_name }}"
+          file="${branch}blunchrules.mdc"
+          if [ ! -f "$file" ]; then
+            echo "::error title=Missing blunchrules file::$file not found"
+            exit 1
+          fi
