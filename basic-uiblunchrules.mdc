@@ -1,5 +1,38 @@
 ---
-description:
-globs:
+description: 
+globs: 
 alwaysApply: false
 ---
+# blunchrules for feat/basic-ui
+
+## Overview / Purpose
+- 左側にカメラ映像、右側に情報パネル、下部に操作ボタンを配置する
+- 後続フェーズの機能統合（目線検出・記録など）の土台を作る
+
+## Scope / Out-of-Scope
+**In scope**  
+- メインウィンドウのレイアウト設計  
+- UI コンポーネント（パネル／ボタン）の配置  
+- リサイズ時に崩れない基本スタイル設定  
+
+**Out of scope**  
+- 目線検出ロジックの実装  
+- データ保存・ファイル I/O  
+- 詳細なスタイリング（色・アイコン最終デザイン）
+
+## Directory Changes
+src/ └─ ui/ ├─ main_window.py # ウィンドウとレイアウト ├─ panels.py # サブパネル定義 └─ resources.qrc # Qt リソース (暫定)
+
+markdown
+Copy
+Edit
+
+## Dependency Changes
+- **PyQt6==6.7.0** を `requirements.txt` / `pyproject.toml` に追加  
+  （management_ver.md に追記）
+
+## Test Checklist
+- [ ] `python src/ui/main_window.py` でウィンドウが起動する  
+- [ ] 解像度 1920×1080 でレイアウトが崩れない  
+
+- [ ] 各ボタンがクリック可能（まだ機能は空で可）
